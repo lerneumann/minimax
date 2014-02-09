@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Leandro Ricardo Neumann - Eduardo Ivan Beckemkamp - Jonathan Ramon Peixoto - Luiz Gustavo Rupp"/>
+	<title>UNISC - Trabalho de Inteligência Artificial</title>
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/smoothness/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+<style>
+
+	html, body {
+		border: 0px;
+		padding: 0px;
+		margin: 0px;
+		background: rgb(248,248,248);
+	}
+	body{
+		margin-top: 10px;
+		font: 62.5% "Trebuchet MS", sans-serif;
+		color: #666;
+	}
+	
+	#divOpcoes {
+		display: none;
+		border: 1px solid gray;
+		background: rgb(230,230,230);
+		box-shadow: 1px 1px 1px 1px;
+		font-size: 11px;
+		padding: 3px 5px;
+		font-family: sans-serif;
+	}
+	#divOpcoes div {
+		border-bottom: 1px solid gray;
+		cursor: default;
+		padding: 2px 4px;
+		color: black;
+	}
+	#divOpcoes div:hover {
+		background: rgb(248,248,248);
+	}
+
+	#main {
+		width: 1000px;
+		border: 2px solid rgb(220,220,220);
+		border-radius: 10px;
+		margin: auto;
+		margin-top: 10px;
+		position: relative;
+		top: 0px;
+		left: 0px
+	}
+
+	.menu {
+		width: 1000px;
+		margin: auto;
+	}
+
+	.ui-button span {
+		padding: 4px !important;
+		font-family: Arial;
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+	#menu_execucao img:hover{
+		opacity: 0.7;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<ul class="menu">
+		<li>
+			<a href="#">Editar</a>
+			<ul>
+				<li><a href="#" onclick="limpaValoresEQuebras()">Limpar Valores</a></li>
+				<li><a href="#" onclick="excluirTudo()">Excluir Tudo</a></li>
+				<li><a href="#" onclick="gerarExemplo()">Gerar Árvore Exemplo</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Executar</a>
+			<ul>
+				<li>
+					<a href="#" onclick="criaMiniMax()">MiniMax</a>		
+				</li>
+				<li>
+					<a href="#" onclick="criaPoda()">Poda Alpha-Beta</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Ajuda</a>
+			<ul>
+				<li>
+					<a href="http://www.youtube.com/watch?v=ceU9sNFaSM8" target="_blank">Vídeo Tutorial</a>		
+				</li>
+				<li>
+					<a href="#" onclick="$('#dialog-sobre').dialog('open')">Sobre</a>
+				</li>
+			</ul>
+		</li>
+
+		<li style="margin-right: 20px; position: relative; top: 0px; left: 0px; display: none;" id="menu_execucao">
+			<img onclick="executarPassoAnterior()" src="images/previous.png" style="width: 24px; position: absolute; top: 1px; left: 350px;" title="Previous" />
+			<img onclick="executarProximoPasso()" src="images/next.png" style="width: 24px; position: absolute; top: 1px; left: 384px;" title="Next" />
+			
+			<button onclick="executarFinal()" style="position: absolute; left: 418px; top: -2px; width: 110px;">Ver resultado</button>
+			<button onclick="finalizarExecucao()" style="position: absolute; left: 540px; top: -2px; width: 140px;">Finalizar execução</button>
+		</li>
+	</ul>
+	<div id="main">
+
+		<canvas width="1000" height="600" id="drawing" style="position: relative; top:0px; left:0px;"> 
+		Your browser must be very old. It provides no canvas support.
+		</canvas>
+	</div>
+
+
+	<div id="dialog-sobre" title="Sobre">
+		<p>
+			Trabalho de Inteligência Artificial<br/>
+			UNISC - Universidade de Santa Cruz do Sul
+		</p>
+		<p>
+			Esta aplicação permite a criação e manipulação de árvores e a execução dos algoritmos <strong>Minimax</strong> e <strong>Poda Alpha-Beta</strong> sobre as mesmas.
+		</p>
+		<p>
+			<br/>
+			Desenvolvido por:
+		</p>
+		<p>
+			Leandro Ricardo Neumann - lrneumann@hotmail.com<br/>
+			Eduardo Ivan Beckemkamp - ebeckemkamp@gmail.com<br/>
+			Jonathan Ramon Peixoto - johnniepeixoto@gmail.com<br/>
+			Luiz Gustavo Rupp - luizrupp@hotmail.com
+		</p>
+		<p style="text-align: right;">
+			<br/>
+			04 de dezembro de 2012
+		</p>
+	</div>
+</body>
+
+</html>
